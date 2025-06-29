@@ -1,0 +1,34 @@
+{
+  "canisters": {
+    "UNICARE_backend": {
+      "main": "src/UNICARE_backend/main.mo",
+      "type": "motoko",
+      "args": "--enhanced-orthogonal-persistence"
+    },
+    "internet_identity": {
+      "type": "custom",
+      "candid": "https://github.com/dfinity/internet-identity/releases/latest/download/internet_identity.did",
+      "wasm": "https://github.com/dfinity/internet-identity/releases/latest/download/internet_identity_dev.wasm.gz",
+      "init": {
+        "assigned_user_number_range": [100000, 200000]
+      }
+    },
+    "UNICARE_frontend": {
+      "dependencies": [
+        "UNICARE_backend"
+      ],
+      "source": [
+        "src/UNICARE_frontend/dist"
+      ],
+      "type": "assets"
+    }
+  },
+  "defaults": {
+    "build": {
+      "args": "",
+      "packtool": ""
+    }
+  },
+  "output_env_file": ".env",
+  "version": 1
+}
